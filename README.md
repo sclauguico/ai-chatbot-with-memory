@@ -15,3 +15,5 @@ A simple chatbot implementation using LangChain, Ollama, and PostgreSQL for conv
 - Offline LLM using Ollama
 - Persistent conversation memory with PostgreSQL
 - Simple web interface with Streamlit
+
+See [project_document.ipynb](https://github.com/sclauguico/ai-chatbot-assessment/tree/main/notebook) for full technical guide
