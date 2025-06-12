@@ -56,7 +56,6 @@ class DatabaseManager:
             
         except Exception as e:
             print(f"Error creating chat history table: {e}")
-            # Don't raise here - let it continue and try to create during first use
     
     def _ensure_valid_uuid(self, session_id: str) -> str:
         """Convert session_id to valid UUID format"""
@@ -77,7 +76,6 @@ class DatabaseManager:
         # Create psycopg connection
         connection = psycopg.connect(self.db_url)
         
-        # Use correct parameter order: table_name, session_id, sync_connection
         return PostgresChatMessageHistory(
             "chat_history",  # table_name as first positional argument
             valid_session_id,      # session_id as UUID
