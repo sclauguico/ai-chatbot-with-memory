@@ -66,7 +66,7 @@ def main():
         except:
             st.error("❌ Database connection failed")
         
-        st.info("💡 Make sure Ollama is running with your chosen model")
+        st.info("💡 Ollama service required for AI responses")
     
     # Display chat messages
     for message in st.session_state.messages:

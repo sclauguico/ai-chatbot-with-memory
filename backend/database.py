@@ -10,6 +10,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class DatabaseManager:
+    """
+    Manages PostgreSQL database connections and chat history operations.
+    
+    Key responsibilities:
+    - Establish database connections
+    - Handle chat history storage/retrieval
+    - Manage session IDs (convert to UUID format)
+    - Initialize database schema
+    """
+    
     def __init__(self):
         self.db_url = self._build_db_url()
         self.engine = create_engine(self.db_url)
@@ -43,7 +53,7 @@ class DatabaseManager:
             temp_connection = psycopg.connect(self.db_url)
             temp_uuid = str(uuid.uuid4())
             
-            # This will create the table automatically
+            # Creates the table automatically
             temp_history = PostgresChatMessageHistory(
                 "chat_history",
                 temp_uuid,

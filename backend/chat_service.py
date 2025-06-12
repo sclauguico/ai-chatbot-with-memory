@@ -4,6 +4,16 @@ from .database import DatabaseManager
 from .llm_handler import OllamaLLM
 
 class ChatService:
+    """
+    Main orchestration service for chat functionality.
+    
+    Responsibilities:
+    - Coordinate between database and LLM
+    - Manage conversation context and memory
+    - Handle session management
+    - Process chat messages end-to-end
+    """
+    
     def __init__(self):
         self.db_manager = DatabaseManager()
         self.llm = OllamaLLM()

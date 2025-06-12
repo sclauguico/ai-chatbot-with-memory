@@ -6,6 +6,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class OllamaLLM:
+    """
+    Handles communication with Ollama LLM API.
+    
+    Features:
+    - Health checking and model verification
+    - Prompt formatting and context management
+    - Error handling and timeout management
+    - Configurable model parameters
+    """
+    
     def __init__(self):
         self.base_url = os.getenv('OLLAMA_BASE_URL', 'http://localhost:11434')
         self.model_name = os.getenv('MODEL_NAME', 'llama2:7b-chat')
