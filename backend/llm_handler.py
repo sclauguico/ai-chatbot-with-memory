@@ -37,6 +37,17 @@ class OllamaLLM:
             print(f"Warning: Ollama connection check failed: {e}")
     
     def generate_response(self, prompt: str, context: str = "") -> str:
+        """
+        Generate response using Ollama API.
+        
+        Args:
+            prompt: User input message
+            context: Previous conversation context
+            
+        Returns:
+            Generated response string
+        """
+        
         """Generate response using Ollama API"""
         full_prompt = f"{context}\n\nHuman: {prompt}\n\nAssistant:" if context else f"Human: {prompt}\n\nAssistant:"
         
@@ -45,8 +56,8 @@ class OllamaLLM:
             "prompt": full_prompt,
             "stream": False,
             "options": {
-                "temperature": 0.7,
-                "max_tokens": 500
+                "temperature": 0.7,    # Creativity vs consistency
+                "max_tokens": 500,     # Response length limit
             }
         }
         
