@@ -11,6 +11,15 @@ from backend.llm_handler import OllamaLLM
 from backend.chat_service import ChatService
 
 class TestDatabaseManager:
+    """
+    Tests database connection logic and URL construction in isolation.
+    
+    Key test areas:
+    - Database URL formatting validation
+    - Connection parameter verification
+    - Configuration handling without actual DB calls
+    """
+    
     def test_build_db_url(self):
         """Test database URL construction"""
         db_manager = DatabaseManager()
@@ -18,6 +27,15 @@ class TestDatabaseManager:
         assert "chatbot_db" in db_manager.db_url
 
 class TestOllamaLLM:
+    """
+    Tests LLM handler functionality using mocked HTTP responses.
+    
+    Key test areas:
+    - Health check API validation
+    - Response generation with controlled inputs
+    - Error handling for network failures
+    """
+    
     @patch('requests.get')
     def test_check_connection(self, mock_get):
         """Test Ollama connection check"""
@@ -38,6 +56,15 @@ class TestOllamaLLM:
         assert response == "Test response"
 
 class TestChatService:
+    """
+    Tests chat service orchestration with mocked dependencies.
+    
+    Key test areas:
+    - End-to-end conversation flow simulation
+    - Context building and message handling
+    - Integration between components via mocks
+    """
+
     @patch('backend.chat_service.DatabaseManager')
     @patch('backend.chat_service.OllamaLLM')
     def test_chat_functionality(self, mock_llm, mock_db):
