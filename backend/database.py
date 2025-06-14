@@ -37,14 +37,16 @@ class DatabaseManager:
     
     def _initialize_database(self):
         """Initialize database tables if they don't exist"""
-        try:
-            with self.engine.connect() as conn:
-                # Test connection
-                conn.execute(text("SELECT 1"))
-            print("Database connection successful")
-        except Exception as e:
-            print(f"Database connection failed: {e}")
-            raise
+        with self.engine.connect() as conn:
+            conn.execute(text("""
+                CREATE TABLE IF NOT EXISTS chat_history (
+                    id SERIAL PRIMARY KEY,
+                    session_id UUID NOT NULL,
+                    message JSONB NOT NULL,
+                    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+                );
+            """))
+            conn.commit()
     
     def _create_chat_history_table(self):
         """Create the chat_history table if it doesn't exist"""
