@@ -125,7 +125,7 @@ See [project_documentation.ipynb](https://github.com/sclauguico/ai-chatbot-asses
 
 ## Acknowledgments
 
-This project was developed as part of an AI Engineer assessment test. Special thanks to the open-source community for providing the tools and frameworks that made this chatbot possible:
+This project was inspired by an AI Engineering assessment. Special thanks to the open-source community for providing the tools and frameworks that made this chatbot possible:
 
 - **LangChain** - For the powerful LLM application framework
 - **Ollama** - For providing easy-to-use offline LLM deployment
